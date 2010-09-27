@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * Implementation of hook_perm
+ */
+function disableemailchange_perm() {
+  return array('disable changing own email');
+}
+
+/**
+ * Implementation of hook_form_alter
+ */
+function disableemailchange_form_alter(&$form, &$form_state, $form_id) {
+  if ('user_profile_form' != $form_id) {
+    return;
+  }
+
+  $admin = user_access('administer users');
+  global $user;
+  if ($admin || ($user->uid && !user_access('disable changing own email'))) {
+    // leave default forms to itself
+  } else {
+    $form['account']['mail'] = array(
+      '#type'     => 'item',
+      '#title'    => 'Email',
+      '#value'    => $user->mail,
+    );
+  }
+}

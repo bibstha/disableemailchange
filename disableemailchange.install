@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Implement hook_install().
+ */
+function disableemailchange_install() {
+  // Make this module's weight 1, as user module weight is 0
+  db_query("UPDATE {system} SET weight = 1 WHERE type = 'module' AND name = 'disableemailchange'");
+}

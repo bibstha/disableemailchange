@@ -1,0 +1,4 @@
+name = Disable Email Change
+description = Prevents users to change their email address
+package = connectr
+core = 6.x
