@@ -3,3 +3,7 @@ A drupal module that prevents users from changing their email address.
 The module gives a new permission 'disable change own email'.
 If a role is assigned this permission, they will not be able to 
 change their email address after registration.
+
+The module also provides a warning message to be displayed during 
+user registration. To enable this, go to http://sitename/admin/settings/disableemailchange
+and set the configuration
