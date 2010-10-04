@@ -32,8 +32,15 @@ function disableemailchange_form_alter(&$form, &$form_state, $form_id) {
     if ($admin || ($user->uid && !user_access('disable changing own email'))) {
       // leave default forms to itself
     } else {
-      $form['account']['mail'] = array(
+      $form['account']['display_email'] = array(
         '#type'     => 'item',
+        '#title'    => 'Email',
+        '#value'    => $user->mail,
+        '#weight'   => -1,
+      );
+      // we still need to return the value for validation
+      $form['account']['mail'] = array(
+        '#type'     => 'value',
         '#title'    => 'Email',
         '#value'    => $user->mail,
       );
